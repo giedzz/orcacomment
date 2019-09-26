@@ -24,7 +24,7 @@ if (empty($_POST["email"])) {
     $error .= '<p class="text-danger"> Email is required</p>';
 } else {
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $error .= '<p class="text-danger"> Invalid email format, must contain</p>';
+        $error .= '<p class="text-danger"> Invalid email format</p>';
     }else{
         $formEmail = $_POST["email"];
     }
