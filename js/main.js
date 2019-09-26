@@ -23,6 +23,7 @@ function submitForm(formID) {
         success: function(data) {
           if (data.error != "") {
             $('#'+formID)[0].reset();
+            $("#commentMessage").html(data.error);
             $("#comments").load("./dbPhp/loadComments.php");
           }
         }

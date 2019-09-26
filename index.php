@@ -25,6 +25,7 @@ include './dbPhp/dbh.php';
         </div>
         <div id="commentFormContainer">
             <form class="col-8 mx-auto comment-submit-form mainCommentForm" method="POST" id="commentForm">
+                <div class="labas"></div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -59,7 +60,7 @@ include './dbPhp/dbh.php';
                 </div>
         </div>
         </form>
-        <span id="commentMessage"></span>
+        <span id="commentMessage" class="text-center"></span>
 
 
         <div id="comments" class="col-md-8 mx-auto">
