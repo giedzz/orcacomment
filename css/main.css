@@ -1,0 +1,33 @@
+hr{
+    background-color: red;
+    border-width: 5px;
+}
+label{
+    line-height: 38px !important;
+    min-width: 100px;
+}
+.media{
+    background-color:#aeaeaea1;
+    padding: 20px 20px 20px 20px;
+}
+.material-icons{
+    -webkit-transform:rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+}
+.reply{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 400px) {
+    .date {
+      display:none;
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .material-icons {
+      display:none;
+    }
+  }
