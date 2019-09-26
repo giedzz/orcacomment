@@ -8,6 +8,7 @@
 -- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET sql_mode = 'ALLOW_INVALID_DATES';
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -33,7 +34,7 @@ CREATE TABLE `comments` (
   `name` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
   `comment` text NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` date DEFAULT CURRENT_TIMESTAMP,
   `parent_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

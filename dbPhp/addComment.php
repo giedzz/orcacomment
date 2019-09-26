@@ -6,6 +6,7 @@ $formName = '';
 $formComment = '';
 $formEmail = '';
 $parent = $_POST['commentId'];
+$date = date("Y-m-d");
 
 if (empty($_POST["name"])) {
     $error .= '<p> class="text-danger"> Name is required</p>';
@@ -25,7 +26,7 @@ if (empty($_POST["email"])) {
     $formEmail = $_POST["email"];
 }
 if ($error == "") {
-    $query = "INSERT INTO comments (id,parent_id, name, email, comment) VALUES (NULL,'$parent', '$formName', '$formEmail', '$formComment')";
+    $query = "INSERT INTO comments (id,parent_id, name, email, comment, date) VALUES (NULL,'$parent', '$formName', '$formEmail', '$formComment', '$date')";
     if (mysqli_query($conn, $query)) {
         $error = '<div class="col-8 mx-auto text-center">
         <label class="text-success"> Comment Added </label>
