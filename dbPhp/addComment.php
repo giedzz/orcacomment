@@ -1,6 +1,8 @@
 <?php
 include './dbh.php';
 
+
+$id = NULL;
 $error = '';
 $formName = '';
 $formComment = '';
@@ -8,16 +10,17 @@ $formEmail = '';
 $parent = $_POST['commentId'];
 $date = date("Y-m-d");
 
-if (empty($_POST["name"])) {
+if (empty(filter_var($_POST["name"], FILTER_SANITIZE_STRING))) {
     $error .= '<p class="text-danger"> Name is required</p>';
 } else {
-    $formName = $_POST["name"];
+    $formName = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
+    $formName = preg_replace('/[^\pL\s]+/u', '', $formName);
 }
 
-if (empty($_POST["comment"])) {
+if (empty(htmlspecialchars($_POST["comment"]))) {
     $error .= '<p class="text-danger"> Comment is required</p>';
 } else {
-    $formComment = $_POST["comment"];
+    $formComment = (htmlspecialchars($_POST["comment"]));
 }
 
 if (empty($_POST["email"])) {
@@ -32,12 +35,21 @@ if (empty($_POST["email"])) {
 
 
 if ($error == "") {
-    $query = "INSERT INTO comments (id,parent_id, name, email, comment, date) VALUES (NULL,'$parent', '$formName', '$formEmail', '$formComment', '$date')";
-    if (mysqli_query($conn, $query)) {
-         $error = ' ';
-    } else {
-        $error = "Error: <br>" . mysqli_error($conn);
-    }
+
+
+    $query = "INSERT INTO comments (id,parent_id, name, email, comment, date) VALUES (:id, :parent, :formName, :formEmail, :formComment, :date)";
+    $statement = $connect -> prepare($query);
+    $statement -> execute(
+        array(
+            ':id' => $id,
+            ':parent' => $parent,
+            ':formName' => $formName,
+            ':formEmail' => $formEmail,
+            ':formComment' => $formComment,
+            ':date' => $date
+        )
+    );
+     $error = ' ';
 }
 
 $data = array(

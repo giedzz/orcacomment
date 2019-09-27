@@ -24,7 +24,7 @@ include './dbPhp/dbh.php';
             <hr>
         </div>
         <div id="commentFormContainer">
-            <form class="col-8 mx-auto comment-submit-form mainCommentForm" method="POST" id="commentForm">
+            <form class="col-8 mx-auto comment-submit-form mainCommentForm" method="POST" id="commentForm" novalidate>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
